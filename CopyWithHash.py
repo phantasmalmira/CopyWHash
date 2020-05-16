@@ -22,7 +22,7 @@ def hashrecursively(pathname, oripath=None):
     dirs = []
     for item in ls:
         if os.path.isfile("{}/{}".format(pathname, item)):
-            if not (item.endswith(".png") or item.endswith(".dmp") or item.endswith(".LOG") or item == 'hashdump.json'):
+            if not (item.endswith(".png") or item.endswith(".dmp") or item.endswith(".LOG")):
                 files.append("{}/{}".format(pathname, item))
         else:
             dirs.append("{}/{}".format(pathname, item))
@@ -56,8 +56,18 @@ def receivemode(src, dst):
         unmodified = []
         with open('{}/{}'.format(src, 'hashdump.json'), 'r') as f:
             hashmap = json.load(f)
-        print('HASHING DEST...')
-        dst_hashmap = hashrecursively(dst)
+
+        if not os.path.isfile('{}/{}'.format(dst, 'hashdump.json')):
+            print('HASHING DEST...')
+            dst_hashmap = hashrecursively(dst)
+            with open('{}/{}'.format(dst, 'hashdump.json'), 'w') as f:
+                f.write(json.dumps(dst_hashmap))
+        else:
+            with open('{}/{}'.format(dst, 'hashdump.json'), 'r') as f: 
+                dst_hashmap = json.load(f)
+
+
+
         for s_key, s_value in hashmap.items():
             if not s_key in dst_hashmap: # Destination has no file
                 plus.append(s_key)
