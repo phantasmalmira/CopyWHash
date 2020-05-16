@@ -13,12 +13,16 @@ Python >= 3.5
 
 ### Send
 1. Generate a MD5 hash snapshot of the source
-```py CopyWithHash.py --mode SEND --src SRCPATH```
+```
+py CopyWithHash.py --mode SEND --src SRCPATH
+```
 2. MD5 hash snapshot `hashdump.json` is created at `SRCPATH`
 
 ### Receive
 1. Compare the MD5 hash snapshot of the source with destination
-```py CopyWithHash.py --mode RECEIVE --src SRCPATH --dst DSTPATH```
+```
+py CopyWithHash.py --mode RECEIVE --src SRCPATH --dst DSTPATH
+```
 2. Review changes to be applied
 3. Confirm changes
 
