@@ -1,15 +1,20 @@
 # CopyWHash
 Python to copy files that are actually changed with MD5.
 
+**NOTE, IF YOU DELETED ALL YOUR FILES BECAUSE YOU BLINDLY APPLIED CHANGES, IT IS NOT MY FAULT**
+
 Currently, it supports
 - Added files in source (PLUS)
 - Removed files in source (MINUS)
 - Modified files in source (MODIFIED)
 
 # Requirements
-Python >= 3.5
+`Python >= 3.5`
 
 # How to use (This is a two step process)
+1. Send
+2. Receive
+
 
 ### Send
 1. Generate a MD5 hash snapshot of the source
